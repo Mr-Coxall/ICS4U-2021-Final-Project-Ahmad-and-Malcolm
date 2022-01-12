@@ -1,8 +1,18 @@
-const config = {
-type: Phaser.AUTO,
-width: 800,
-height: 700,
-backgroundColor: 0x5f6e7a
-}
+/* global Phaser */
+
+// Copyright (c) 2020 Mr. Coxall All rights reserved
+//
+// Created by: Malcolm Tompkins
+// Created on: Sep 2020
+// This is the Phaser3 configuration file
+
+//* Game scene */
 const game = new Phaser.Game(config)
+const config = {
+  width: 2000,
+  height: 1000,
+  // set background color
+  backgroundColor: 0xfffff,
+}
+let scene = new SceneMain();
 console.log(game)
