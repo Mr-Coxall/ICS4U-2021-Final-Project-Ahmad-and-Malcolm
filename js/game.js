@@ -7,14 +7,26 @@
 // This is the Phaser3 configuration file
 
 //* Game scene */
-``
+import { Card } from './card.js'
 
-const game = new Phaser.Game(config)
+import { MainScene } from './mainScene.js'
+
+let imagePath = './images/MemoryGameCards/image1.png'
+
+var flippedOrNot = new Boolean(false)
+
+const card1 = new Card(imagePath, flippedOrNot)
+
 const config = {
   width: 2000,
   height: 1000,
   // set background color
   backgroundColor: 0xfffff,
 }
-let scene = new SceneMain();
-console.log(game)
+const game = new Phaser.Game(config)
+
+const mainScene = new MainScene()
+
+game.scene.add('MainScene', mainScene)
+game.scene.start('MainScene')
+
