@@ -7,6 +7,8 @@
 // This is the Phaser3 configuration file
 
 //* Game scene */
+``
+
 const game = new Phaser.Game(config)
 const config = {
   width: 2000,
