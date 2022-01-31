@@ -8,25 +8,40 @@
 
 //* Game scene */
 import { Card } from './card.js'
-
 import { MainScene } from './mainScene.js'
+import { SplashScene } from './splashScene.js'
+import { MenuScene } from './menuScene.js'
 
-let imagePath = './images/MemoryGameCards/image1.png'
+const splashScene = new SplashScene()
+const menuScene = new MenuScene()
 
 var flippedOrNot = new Boolean(false)
 
-const card1 = new Card(imagePath, flippedOrNot)
+  let imagePath = 1
+  var counter = 1
+  const cardImagesArr = [8]
+  for (var imageCounter = 0; imageCounter > cardImagesArr.length; imageCounter++) {
+    cardImagesArr[imageCounter] = imageCounter
+  }
+const mainScene = new MainScene(imagePath, flippedOrNot)
 
 const config = {
-  width: 2000,
-  height: 1000,
+  width: 1970,
+  height: 1080,
   // set background color
   backgroundColor: 0xfffff,
+  scale: {
+    mode: Phaser.Scale.FIT, 
+    autoCenter: Phaser.Scale.CENTER_BOTH
+  }
 }
+// create timer in game.js and method to give it to other classes
 const game = new Phaser.Game(config)
+// add splash and menuScene back in 
+game.scene.add('menuScene', menuScene)
+game.scene.add('splashScene', splashScene)
+game.scene.add('mainScene', mainScene)
+game.scene.start('splashScene')
 
-const mainScene = new MainScene()
 
-game.scene.add('MainScene', mainScene)
-game.scene.start('MainScene')
 
