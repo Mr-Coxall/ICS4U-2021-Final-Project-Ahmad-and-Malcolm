@@ -40,7 +40,3 @@ import { EndScene } from './endScene.js'
   game.scene.add('instructionScene', instructionScene)
   game.scene.add('endScene', endScene)
   game.scene.start('splashScene')
-
-
-
-
