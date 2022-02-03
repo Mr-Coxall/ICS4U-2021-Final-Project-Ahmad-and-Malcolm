@@ -1,27 +1,32 @@
 export class Card extends Phaser.Scene {
+  // Card private fields
   #imagePath;
   #flippedOrNot;
   #cardArr2D = [];
 
-  getFlipperOrNot() {
-    return this.#flippedOrNot
-  }
-
   shuffle(array) {
-    let currentIndex = array.length,  randomIndex;
-
-    // While there remain elements to shuffle...
-    while (currentIndex != 0) {
-
-    // Pick a remaining element...
-    randomIndex = Math.floor(Math.random() * currentIndex);
-    currentIndex--;
-
-    // And swap it with the current element.
-    [array[currentIndex], array[randomIndex]] = [
-    array[randomIndex], array[currentIndex]];
+    let length = array.length;
+    
+    while (length > 0) {
+      let random = Math.floor(Math.random() * length);
+      length--;
+      // shuffle indexes
+      let temp = array[length];
+      array[length] = array[random];
+      array[random] = temp;
+    }
+    return array
+  }
+  checkMatch(array) {
+    var check = null;
+    if (array[0] == array[1]) {
+      console.log('matched')
+      check = true;
+    } else {
+      console.log('Not Matched')
+      check = false;
+    }
+    return check
   }
 
-  return array;
-  }
 }

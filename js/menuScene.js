@@ -6,25 +6,27 @@
 // Created on: Sep 2020
 // This is the Menue Scene
 
+// class Menuescene
 export class MenuScene extends Phaser.Scene {
+  // constructor
   constructor () {
     super({ key: 'menuScene' })
 
     this.menuSceneBackgroundImage = null
     this.startButton = null
   }
-
+  // Phaser init build in function
   init (data) {
     this.cameras.main.setBackgroundColor('#FFC34B')
   }
-
+  // Phaser preload build in function
   preload () {
     console.log('Menu Scene')
 
     this.load.image('menuSceneBackground', './assets/images/memory.png')
     this.load.image('startButton', './assets/images/start1.png')
   }
-
+  // Phaser create build in function
   create (data) {
     this.menuSceneBackgroundImage = this.add.sprite(10, 10, 'menuSceneBackground').setScale(0.22)
     this.menuSceneBackgroundImage.x = 1920 / 2
@@ -35,7 +37,7 @@ export class MenuScene extends Phaser.Scene {
     this.startButton.on('pointerdown', () => this.clickButton())
     
   }
-
+  // seitch to mainscene when button click
   clickButton () {
     this.scene.switch('mainScene')
   }

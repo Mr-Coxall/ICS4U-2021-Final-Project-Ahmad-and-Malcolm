@@ -1,0 +1,52 @@
+/* global Phaser */
+
+// Copyright (c) 2020 Mr. Coxall All rights reserved
+//
+// Created by: Ahmad El-khawaldeh
+// Created on: Sep 2020
+// This is the Menue Scene
+
+// end scene class
+
+import { moveCounter } from './mainScene.js'
+import { game } from './game.js'
+
+export class EndScene extends Phaser.Scene {
+  // constructor
+  constructor () {
+    super({ key: 'endScene' })
+  }
+  // Phaser init build in function
+  init (data) {
+    this.cameras.main.setBackgroundColor('#8510d8')
+  }
+  // Phaser preload build in function
+  preload () {
+    console.log(moveCounter)
+    this.load.image('winimage', './assets/images/win.png')
+    this.load.image('resetImage', './assets/images/reset.png')
+  }
+
+  // Phaser create build in function
+  create (data) {
+    this.winImage = this.add.sprite(0, 0, 'winimage').setScale(2)
+    this.winImage.x = 1920 / 2
+    this.winImage.y = 1000 / 2
+
+    // Reset button
+    this.resetPic = this.add.sprite(0, 0, 'resetImage').setScale(0.16)
+    this.resetPic.x = 1920 / 2 - 850
+    this.resetPic.y = 160 / 2
+    this.resetPic.setInteractive({ useHandCursor: true })
+    this.resetPic.on('pointerdown', () => this.clickResetButton())
+
+    var style = { font: "bold 32px Arial", fill: "#8510d8", boundsAlignH: "center", boundsAlignV: "middle" }
+    this.moveCounterText = this.add.text(0, 0, "It took you: " + moveCounter + " moves to solve the puzzle", style).setScale(2)
+    this.moveCounterText.x = 1920 / 2 - 600
+    this.moveCounterText.y = 1000 / 2 - 400 
+  }
+  clickResetButton() {
+    location.reload()
+  } 
+  
+}
