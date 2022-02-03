@@ -2,43 +2,41 @@
 
 // Copyright (c) 2020 Mr. Coxall All rights reserved
 //
-// Created by: Mr. Coxall
+// Created by: Ahmad El-khawaldeh and Malcolm Tompkins
 // Created on: Sep 2020
 // This is the Phaser3 configuration file
 
-import { SplashScene } from './splashScene.js'
-import { MenuScene } from './menuScene.js'
-
-// Our game scenes
-const splashScene = new SplashScene()
-const menuScene = new MenuScene()
-
 //* Game scene */
-const config = {
-  type: Phaser.AUTO,
-  width: 1920,
-  height: 1080,
-  physics: {
-    default: 'arcade',
-    arcade: {
-      debug: false
+import { Card } from './card.js'
+import { MainScene } from './mainScene.js'
+import { SplashScene } from './splashScene.js'
+import { InstructionScene } from './instructionScene.js'
+import { MenuScene } from './menuScene.js'
+import { EndScene } from './endScene.js'
+
+  const splashScene = new SplashScene()
+  const menuScene = new MenuScene()
+  const instructionScene = new InstructionScene()
+  const endScene = new EndScene()
+  const flippedOrNot = new Boolean(false)
+  const mainScene = new MainScene()
+  
+  const config = {
+    width: 1970,
+    height: 1080,
+    // set background color
+    backgroundColor: 0xfffff,
+    scale: {
+      mode: Phaser.Scale.FIT, 
+      autoCenter: Phaser.Scale.CENTER_BOTH
     }
-  },
-  // set background color
-  backgroundColor: 0xffffff,
-  scale: {
-    mode: Phaser.Scale.FIT,
-    // we place it in the middle of the page.
-    autoCenter: Phaser.Scale.CENTER_BOTH
   }
-}
-
-const game = new Phaser.Game(config)
-
-// load scenes
-// NOTE: remember any "key" is global and CAN NOT be reused!
-game.scene.add('splashScene', splashScene)
-game.scene.add('menuScene', menuScene)
-
-// start title
-game.scene.start('splashScene')
+  // create timer in game.js and method to give it to other classes
+  export const game = new Phaser.Game(config)
+  // add splash and menuScene back in 
+  game.scene.add('menuScene', menuScene)
+  game.scene.add('splashScene', splashScene)
+  game.scene.add('mainScene', mainScene)
+  game.scene.add('instructionScene', instructionScene)
+  game.scene.add('endScene', endScene)
+  game.scene.start('splashScene')
