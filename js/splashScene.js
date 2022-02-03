@@ -2,7 +2,7 @@
 
 // Copyright (c) 2020  All rights reserved
 //
-// Created by: Ahmad El-khawaldeh
+// Created by: Ahmad El-khawaldeh and Malcolm Tompkins
 // Created on: Sep 2020
 // This is the Splash Scene
 

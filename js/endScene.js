@@ -2,13 +2,13 @@
 
 // Copyright (c) 2020 Mr. Coxall All rights reserved
 //
-// Created by: Ahmad El-khawaldeh
-// Created on: Sep 2020
+// Created by: Ahmad El-khawaldeh and Malcolm Tompkins
+// Created on: January 2020
 // This is the Menue Scene
 
-// end scene class
-
+// Imported moveCounter variable from mainScene
 import { moveCounter } from './mainScene.js'
+// Imported game object from game.js
 import { game } from './game.js'
 
 export class EndScene extends Phaser.Scene {
@@ -40,11 +40,14 @@ export class EndScene extends Phaser.Scene {
     this.resetPic.setInteractive({ useHandCursor: true })
     this.resetPic.on('pointerdown', () => this.clickResetButton())
 
+    // Move counter text and style
     var style = { font: "bold 32px Arial", fill: "#8510d8", boundsAlignH: "center", boundsAlignV: "middle" }
     this.moveCounterText = this.add.text(0, 0, "It took you: " + moveCounter + " moves to solve the puzzle", style).setScale(2)
     this.moveCounterText.x = 1920 / 2 - 600
     this.moveCounterText.y = 1000 / 2 - 400 
   }
+
+  // Function to be executed after reset button is pressed
   clickResetButton() {
     location.reload()
   } 

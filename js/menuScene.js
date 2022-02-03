@@ -2,7 +2,7 @@
 
 // Copyright (c) 2020 Mr. Coxall All rights reserved
 //
-// Created by: Ahmad El-khawaldeh
+// Created by: Ahmad El-khawaldeh and Malcolm Tompkins
 // Created on: Sep 2020
 // This is the Menue Scene
 
@@ -28,16 +28,18 @@ export class MenuScene extends Phaser.Scene {
   }
   // Phaser create build in function
   create (data) {
+    // Background image 
     this.menuSceneBackgroundImage = this.add.sprite(10, 10, 'menuSceneBackground').setScale(0.22)
     this.menuSceneBackgroundImage.x = 1920 / 2
     this.menuSceneBackgroundImage.y = 300 / 2
 
+    // Start button sprite
     this.startButton = this.add.sprite(1920 / 2, (1080 / 2) + 100, 'startButton')
     this.startButton.setInteractive({ useHandCursor: true })
     this.startButton.on('pointerdown', () => this.clickButton())
     
   }
-  // seitch to mainscene when button click
+  // Switch to mainscene when button click
   clickButton () {
     this.scene.switch('mainScene')
   }

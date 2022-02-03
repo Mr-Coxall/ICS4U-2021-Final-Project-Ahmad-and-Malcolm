@@ -1,7 +1,7 @@
 /* global Phaser */
 // Copyright (c) 2020 Mr. Coxall All rights reserved
 //
-// Created by: Malcolm Tompkins
+// Created by: Ahmad El-khawaldeh and Malcolm Tompkins
 // Created on: Sep 2020
 // This is the Phaser3 configuration file
 
@@ -39,7 +39,7 @@ export class MainScene extends Phaser.Scene {
   // Phaser preload build in function
   preload() {
     console.log('MainScene')
-    // Load images 
+    // Loads images
     for (var i = 0; i <= 8; i++) {
       this.load.image('cardImage'+i, './assets/images/'+i+'image.png')
     }
@@ -51,6 +51,7 @@ export class MainScene extends Phaser.Scene {
   }
   // phaser create build in function 
   create(data) {
+    // Creates card sprites
     for (var counter = 1; counter <= 8; counter++) {
       for (var t = 0; t < 2; t++) {
         let card = this.add.sprite(0, 0, 'cardImage0').setScale(0.7)
@@ -112,10 +113,12 @@ export class MainScene extends Phaser.Scene {
     this.#cardArray[15].x = 1235
     this.#cardArray[15].y = 735
     
+    // Grid image 
     this.backgroundImage = this.add.sprite(0, 0, 'backgroundImage').setScale(2.75)
     this.backgroundImage.setOrigin(0,0)
     this.backgroundImage.x = 1400 / 2
     this.backgroundImage.y = 400 / 2
+    // Creates background layer
     const backgroundLayer = this.add.layer();
     backgroundLayer.add([ this.backgroundImage ])
     const cardLayer = this.add.layer();
@@ -144,7 +147,7 @@ export class MainScene extends Phaser.Scene {
     this.resetPic.setInteractive({ useHandCursor: true })
     this.resetPic.on('pointerdown', () => this.clickResetButton())
   }
-
+  // Function to be executed upon clicking a card
   cardClick(card) {
     if (this.#lockBoard) return;
     if (this.#previousPlacement == card.arrayPlacement) return;
@@ -182,14 +185,15 @@ export class MainScene extends Phaser.Scene {
       this.scene.switch('endScene')
     }
   }
-
+  // switch to instructionScene
   clickInstrucButton() {
     this.scene.switch('instructionScene')
   }
-
+  // switch to button scene
   clickHomeButton(){
       this.scene.switch('menuScene')
   }
+  // reset when restart button is clicked
   clickResetButton() {
     location.reload()
   }
